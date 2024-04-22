@@ -7,10 +7,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--model", type=str, default="CompVis/stable-diffusion-v1-4")
 parser.add_argument("--prompt", type=str, default="a photo of dog")
 parser.add_argument("--save_dir", type=str, default="data/dogs/class")
+parser.add_argument("--sample_nums", type=int, default=1000)
+parser.add_argument("--batch_size", type=int, default=16)
 args = parser.parse_args()
 
-sample_nums = 1000
-batch_size = 16
+sample_nums = args.sample_nums
+batch_size = args.batch_size
 prompt = args.prompt
 save_dir = args.save_dir
 
