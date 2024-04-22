@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     for text in datasets:
         with torch.no_grad():
-            images = model(text, height=512, width=512, num_inference_steps=50)["sample"]
+            images = model(text, height=512, width=512, num_inference_steps=50).images
 
         for image in images:
             image.save(f"{save_dir}/{id}.png")
