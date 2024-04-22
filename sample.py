@@ -10,7 +10,7 @@ save_dir = "data/dogs/class"
 if __name__ == "__main__":
     model_id = "CompVis/stable-diffusion-v1-4"
     device = "cuda"
-    model = StableDiffusionPipeline.from_pretrained(model_id, use_auth_token=True, cache_dir="./.cache").to(device)
+    model = StableDiffusionPipeline.from_pretrained(model_id).to(device)
 
     datasets = [prompt] * sample_nums
     datasets = [datasets[x:x+batch_size] for x in range(0, sample_nums, batch_size)]
