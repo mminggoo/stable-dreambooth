@@ -193,7 +193,7 @@ if __name__ == "__main__":
     device = "cuda"
 
     try:
-        model = StableDiffusionPipeline.from_pretrained(model_id, use_auth_token=True, cache_dir="./.cache").to(device)
+        model = StableDiffusionPipeline.from_pretrained(model_id).to(device)
     except Exception as e:
         print(e)
         print("Run 'huggingface-cli login' to store auth token.")
