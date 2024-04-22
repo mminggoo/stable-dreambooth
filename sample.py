@@ -1,15 +1,23 @@
 from diffusers.pipelines import StableDiffusionPipeline
 import torch
 
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--model", type=str, default="CompVis/stable-diffusion-v1-4")
+parser.add_argument("--prompt", type=str, default="a photo of dog")
+parser.add_argument("--save_dir", type=str, default="data/dogs/class")
+args = parser.parse_args()
+
 sample_nums = 1000
 batch_size = 16
-prompt = "a photo of dog"
-save_dir = "data/dogs/class"
+prompt = args.prompt
+save_dir = args.save_dir
 
 
 if __name__ == "__main__":
-    model_id = "CompVis/stable-diffusion-v1-4"
-    device = "cuda"
+    model_id = args.model
+    device = "cuda" if torch.cuda.is_available() else "cpu"
     model = StableDiffusionPipeline.from_pretrained(model_id).to(device)
 
     datasets = [prompt] * sample_nums
